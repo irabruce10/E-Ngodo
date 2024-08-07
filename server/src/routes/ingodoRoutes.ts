@@ -42,4 +42,17 @@ router.put("/:id", async (req, res) => {
     res.status(500).send(error);
   }
 });
+
+router.delete("/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    const record = await ingodoModel.findByIdAndDelete(id);
+
+    if (!record) return res.status(404).send();
+    res.status(200).send(record);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
 export default router;
