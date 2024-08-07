@@ -18,6 +18,6 @@ const ingodoSchema = new mongoose.Schema<Ingodo>({
   paymentMethod: { type: String, required: true },
 });
 
-const ingodoModal = mongoose.model<Ingodo>("Ingodo", ingodoSchema);
+const ingodoModel = mongoose.model<Ingodo>("Ingodo", ingodoSchema);
 
-export default ingodoModal;
+export default ingodoModel;
