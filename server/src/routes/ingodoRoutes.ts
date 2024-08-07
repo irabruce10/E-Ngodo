@@ -17,4 +17,14 @@ router.get("getAllByUserID:userId", async (req, res) => {
   }
 });
 
+router.get("getAllByUserID:userId", async (req, res) => {
+  try {
+    const NewRecordBody = req.body;
+    const newRecord = new ingodoModal(NewRecordBody);
+    const savedRecord = await newRecord.save();
+    res.status(200).send(savedRecord);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
 export default router;
