@@ -32,6 +32,9 @@ export const FinancialProvider = ({
     const response = await fetch("https://localhost:3001/financial-records", {
       method: "POST",
       body: JSON.stringify(record),
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
 
     try {
@@ -39,7 +42,9 @@ export const FinancialProvider = ({
         const newRecord = await response.json();
         setRecords((prev) => [...records, newRecord]);
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
