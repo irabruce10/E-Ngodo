@@ -1,11 +1,14 @@
 import { useUser } from "@clerk/clerk-react";
 import { useState } from "react";
+import { useFinancialRecords } from "../../context/financial-context";
 
 export const AccountForm = () => {
   const [description, setDescription] = useState<string>("");
-  const [amount, setAmount] = useState("");
-  const [category, setCategory] = useState("");
-  const [paymentMethod, setPaymentMethod] = useState("");
+  const [amount, setAmount] = useState<string>("");
+  const [category, setCategory] = useState<string>("");
+  const [paymentMethod, setPaymentMethod] = useState<string>("");
+
+  const { addRecord } = useFinancialRecords();
 
   const { user } = useUser();
 
@@ -13,15 +16,18 @@ export const AccountForm = () => {
     event.preventDefault();
     // Add transaction to the database
 
-    const newAmount = {
-      userId: user?.id,
-      amount: amount,
+    const newRecord = {
+      userId: user?.id ?? "",
+      date: new Date(),
       description: description,
+      amount: parseFloat(amount),
       category: category,
       paymentMethod: paymentMethod,
-      createdAt: new Date().toISOString(),
     };
     // Add new transaction to the database
+
+    addRecord(newRecord);
+    
     // Reset form fields
     setDescription("");
     setAmount("");
