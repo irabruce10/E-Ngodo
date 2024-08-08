@@ -27,7 +27,7 @@ export const AccountForm = () => {
     // Add new transaction to the database
 
     addRecord(newRecord);
-    
+
     // Reset form fields
     setDescription("");
     setAmount("");

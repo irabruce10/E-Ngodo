@@ -1,8 +1,8 @@
 import { createContext, useContext, useState } from "react";
 
-interface Ingodo {
-  id?: string;
-  userid: string;
+export interface Ingodo {
+  _id?: string;
+  userId: string;
   date: Date;
   description: string;
   amount: number;
@@ -13,8 +13,8 @@ interface Ingodo {
 interface FinancialContextType {
   records: Ingodo[];
   addRecord: (record: Ingodo) => void;
-  updateRecord: (id: string, newRecord: Ingodo) => void;
-  deleteRecord: (id: string) => void;
+  // updateRecord: (id: string, newRecord: Ingodo) => void;
+  // deleteRecord: (id: string) => void;
 }
 
 export const FinancialContext = createContext<FinancialContextType | undefined>(
@@ -40,7 +40,7 @@ export const FinancialProvider = ({
     try {
       if (response.ok) {
         const newRecord = await response.json();
-        setRecords((prev) => [...records, newRecord]);
+        setRecords((prev) => [...prev, newRecord]);
       }
     } catch (error) {
       console.log(error);
