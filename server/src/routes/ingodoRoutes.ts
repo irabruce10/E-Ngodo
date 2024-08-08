@@ -17,14 +17,14 @@ router.get("getAllByUserID:userId", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", async (request, response) => {
   try {
-    const newRecordBody = req.body;
+    const newRecordBody = request.body;
     const newRecord = new ingodoModel(newRecordBody);
     const savedRecord = await newRecord.save();
-    res.status(200).send(savedRecord);
+    response.status(200).send(savedRecord);
   } catch (error) {
-    res.status(500).send(error);
+    response.status(500).send(error);
   }
 });
 

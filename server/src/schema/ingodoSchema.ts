@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 interface Ingodo {
-  userid: string;
+  userId: string;
   date: Date;
   description: string;
   amount: number;
@@ -10,7 +10,7 @@ interface Ingodo {
 }
 
 const ingodoSchema = new mongoose.Schema<Ingodo>({
-  userid: { type: String, required: true },
+  userId: { type: String, required: true },
   date: { type: Date, required: true },
   description: { type: String, required: true },
   amount: { type: Number, required: true },
