@@ -29,7 +29,7 @@ export const FinancialProvider = ({
   const [records, setRecords] = useState<Ingodo[]>([]);
 
   const addRecord = async (record: Ingodo) => {
-    const response = await fetch("https://localhost:3001/financial-records", {
+    const response = await fetch("http://localhost:3001/financial-records", {
       method: "POST",
       body: JSON.stringify(record),
       headers: {
