@@ -65,9 +65,3 @@ export const useFinancialRecords = () => {
   }
   return context;
 };
-
-// not finished yet
-// tomorrow i will check
-// tomorrOW AGAIN
-//today again i will check
-//today again i will check
